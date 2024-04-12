@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>Merging Orgs L-ID</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT -->
+
+    <!-- CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+        <form class="form" action="/find/" method="get">
+        <label class="main_text" for="name">Введите название организации</label><br>
+        <input class="input_field" type="text" id="name" name="name">
+        <br>
+        <input class="submit_button" type="submit" value="Найти">
+        </form>
+</body>
+</html>

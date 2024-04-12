@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>Merging Orgs L-ID</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+    {% csrf_token %}
+    <form method="post" action="/preview_orgs/">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Удалить из списка для объединения?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for idx, org in orgs %}
+                <tr>
+                    <td>{{ idx }}</td>
+                    <td><input type="hidden" name="allOrgsId" value="{{ org.id }}">{{ org.id }}</td>
+                    <td><input type="hidden" name="allOrgsName" value="{{ org.name }}">{{ org.name }}</td>
+                    <td><input type="checkbox" name="selectedOrgs" value="{{ org.id }}"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <button class="send_request_button">Сохранить изменения в таблице</button>
+    <a href="/" class="home_button">Назад к поиску</a>
+    </form>
+</body>
+</html>

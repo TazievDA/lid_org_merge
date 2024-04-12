@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>Merging Orgs L-ID</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+    {% csrf_token %}
+    <form method="post" action="/merge_orgs/">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Название</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for idx, org in orgs %}
+                <tr>
+                    <td>{{ idx }}</td>
+                    <td><input type="hidden" name="orgsToMerge" value="{{ org.id }}">{{ org.id }}</td>
+                    <td>{{ org.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <button class="confirm_button">Перейти к объединению</button>
+    <a href="/" class="home_button">Назад к поиску</a>
+    </form>
+</body>
+</html>
