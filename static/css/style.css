@@ -7,39 +7,31 @@ table {
     margin: 10px auto;
     width: -webkit-fill-available;
 }
-
 td, th {
   border: 1px solid rgb(190,190,190);
   padding: 10px 20px;
 }
-
 th {
   background-color: rgb(235,235,235);
 }
-
 td {
   text-align: center;
 }
-
 tr:nth-child(even) td {
   background-color: rgb(250,250,250);
 }
-
 tr:nth-child(odd) td {
   background-color: rgb(245,245,245);
 }
-
 caption {
   padding: 10px;
 }
-
 body {
   background-color: #f0f5fa;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
-
 .home_button {
   background-color: rgb(245, 133, 133); 
   border-radius: 10px;
@@ -53,7 +45,6 @@ body {
   font-size: 16px;
   margin: 10px auto;
 }
-
 .input_field {
   height: 36px;
   width: 300px;
@@ -65,15 +56,12 @@ body {
   padding: 0 10px;
   background: #fff;
 }
-
 input:focus {
   outline: none;
 }
-
 input:active {
   outline: none;
 }
-
 .submit_button {
   background-color: rgb(0, 156, 0); 
   border-radius: 10px;
@@ -87,7 +75,6 @@ input:active {
   margin: 10px;
   cursor: pointer;
 }
-
 .confirm_button {
   background-color: rgb(0, 156, 0);
   border-radius: 10px;
@@ -102,8 +89,8 @@ input:active {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: normal;
+  cursor: pointer;
 }
-
 .send_request_button {
   background-color: rgb(0, 156, 0);
   border-radius: 10px;
@@ -119,7 +106,50 @@ input:active {
   font-weight: 300;
   font-style: normal;
 }
-
 .main_text {
   margin: 10px 10px;
+}
+.b-container{
+    width:200px;
+    height:150px;
+    background-color: #ccc;
+    margin:0px auto;
+    padding:10px;
+    font-size:30px;
+    color: #fff;
+}
+.b-popup{
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+}
+.b-popup .b-popup-content{
+    margin: 40px auto 0px auto;
+    width: 620px;
+    height: 250px;
+    padding: 10px;
+    background-color: #f0f5fa   ;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #000;
+}
+.close_pop_up {
+    float: right;
+    cursor: pointer;
+}
+.pop_up_text{
+    text-align: center;
+}
+.popup_input_field{
+    height: 36px;
+    width: 300px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.08);
+    border-color: #fff;
+    margin: 30px 155px;
+    padding: 0 10px;
+    background: #fff;
 }

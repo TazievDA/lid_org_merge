@@ -53,3 +53,18 @@ class MergingViews:
 
         else:
             return HttpResponse('Метод не разрешен', status=405)
+
+    def merge_orgs_view(self, request):
+        if request.method == 'POST':
+            orgs_to_merge = request.POST.getlist('orgIds')[0].split(',')
+            preffered_org = request.POST.get('id')
+            print(preffered_org)
+            for org in orgs_to_merge:
+                print(org)
+            template = 'merge_orgs.html'
+            context = {
+                'orgs': enumerate(orgs_to_merge, start=1)
+            }
+            return render(request, template, context)
+        else:
+            return HttpResponse('Метод не разрешен', status=405)
