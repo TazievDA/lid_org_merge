@@ -21,9 +21,9 @@ from merging.views import MergingViews
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", MergingViews().index_view),
+    path("start_merge/", MergingViews().start_merge_view, name='start'),
     path("find/", MergingViews().show_org_view),
     path("preview_orgs/", MergingViews().show_orgs_to_merge_view),
     path("merge_orgs/", MergingViews().merge_orgs_view),
-    path("users/", include("users.urls", namespace="users")),
+    path("", include("users.urls", namespace="users")),
 ]

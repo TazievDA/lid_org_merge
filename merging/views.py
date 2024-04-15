@@ -1,6 +1,7 @@
 import os
 
-from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 
@@ -9,7 +10,7 @@ class MergingViews:
     def __init__(self):
         pass
 
-    def index_view(self, request):
+    def start_merge_view(self, request):
         template = 'index.html'
         return render(request, template)
 
