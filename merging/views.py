@@ -23,8 +23,6 @@ class MergingViews:
 
     def merge_organizations(self, org_ids, preferred_org_id):
         api_url = 'https://leader-id.ru/api/v4/admin/organizations/merge'
-        if preferred_org_id in org_ids:
-            org_ids.remove(preferred_org_id)
         headers = {'Authorization': f'Bearer {os.getenv("API_TOKEN")}'}
         data = {
             'orgIds': org_ids,
@@ -72,8 +70,10 @@ class MergingViews:
             preffered_org = request.POST.get('id')
             errors = []
             error_count = 0
+            if preffered_org in orgs_to_merge:
+                orgs_to_merge.remove(preffered_org)
             for org in orgs_to_merge:
-                merge_result = self.merge_organizations(orgs_to_merge, preffered_org)
+                merge_result = self.merge_organizations([int(org)], int(preffered_org))
                 if merge_result.get('errors'):
                     errors.append(merge_result.get('errors'))
                     error_count += 1
