@@ -13,7 +13,7 @@ class MergingViews:
         template = 'index.html'
         return render(request, template)
 
-    def find_orgs_view(self, name):
+    def find_organizations(self, name):
         api_url = 'https://admin.leader-id.ru/api/v4/admin/organizations'
         headers = {'Authorization': f'Bearer {os.getenv("API_TOKEN")}'}
         params = {'name': f"{name}", 'paginationSize': 1000}
@@ -21,8 +21,20 @@ class MergingViews:
         data = response.json().get('data', None).get('_items', None)
         return data
 
+    def merge_organizations(self, org_ids, preferred_org_id):
+        api_url = 'https://leader-id.ru/api/v4/admin/organizations/merge'
+        if preferred_org_id in org_ids:
+            org_ids.remove(preferred_org_id)
+        headers = {'Authorization': f'Bearer {os.getenv("API_TOKEN")}'}
+        data = {
+            'orgIds': org_ids,
+            'preferredOrgId': preferred_org_id
+        }
+        response = requests.post(api_url, json=data, headers=headers)
+        return response.json()
+
     def show_org_view(self, request):
-        orgs = self.find_orgs_view(request.GET.get('name'))
+        orgs = self.find_organizations(request.GET.get('name'))
         template = 'show_orgs.html'
         context = {
             'orgs': enumerate(orgs, start=1)
@@ -58,12 +70,17 @@ class MergingViews:
         if request.method == 'POST':
             orgs_to_merge = request.POST.getlist('orgIds')[0].split(',')
             preffered_org = request.POST.get('id')
-            print(preffered_org)
+            errors = []
+            error_count = 0
             for org in orgs_to_merge:
-                print(org)
+                merge_result = self.merge_organizations(orgs_to_merge, preffered_org)
+                if merge_result.get('errors'):
+                    errors.append(merge_result.get('errors'))
+                    error_count += 1
             template = 'merge_orgs.html'
             context = {
-                'orgs': enumerate(orgs_to_merge, start=1)
+                'errors': errors,
+                'error_count' : error_count,
             }
             return render(request, template, context)
         else:

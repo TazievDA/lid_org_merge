@@ -20,9 +20,17 @@
 
 </head>
 <body>
-    {% csrf_token %}
-    <form method="post" action="/merging_orgs/">
-        {% csrf_token %}
+{% if error_count == 0 %}
+    <p>Все организации успешно объединены.</p>
+{% else %}
+    {% for error in errors %}
+    <p>При объединении произошло {{ error_count }} ошибок.</p>
+    <p>Полный список ошибок:</p>
+    <ul>
+        <li>{{ error }}</li>
+    </ul>
+    {% endfor %}
+{% endif %}
 
 </body>
 </html>
