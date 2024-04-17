@@ -22,14 +22,16 @@
 <body>
 {% if error_count == 0 %}
     <p>Все организации успешно объединены.</p>
+    <a href="/start_merge/"><button class="success_button">Вернуться к ещё одному поиску</button></a>
 {% else %}
-    {% for error in errors %}
     <p>При объединении произошло {{ error_count }} ошибок.</p>
     <p>Полный список ошибок:</p>
+    {% for error in errors %}
     <ul>
         <li>{{ error }}</li>
     </ul>
     {% endfor %}
+    <a href="/start_merge/"><button class="fail_button">Вернуться к ещё одному поиску</button></a>
 {% endif %}
 
 </body>

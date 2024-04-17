@@ -29,6 +29,7 @@
                     <th>#</th>
                     <th>ID</th>
                     <th>Название</th>
+                    <th>Статус модерации</th>
                     <th>Удалить из списка для объединения?</th>
                 </tr>
             </thead>
@@ -38,13 +39,14 @@
                     <td>{{ idx }}</td>
                     <td><input type="hidden" name="allOrgsId" value="{{ org.id }}">{{ org.id }}</td>
                     <td><input type="hidden" name="allOrgsName" value="{{ org.name }}">{{ org.name }}</td>
+                    <td>{{ org.moderation }}</td>
                     <td><input type="checkbox" name="selectedOrgs" value="{{ org.id }}"></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     <button class="send_request_button">Сохранить изменения в таблице</button>
-    <a href="start_merge/" class="home_button">Назад к поиску</a>
+    <a href="/start_merge/" class="home_button">Назад к поиску</a>
     </form>
 </body>
 </html>

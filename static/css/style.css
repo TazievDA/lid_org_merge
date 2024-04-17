@@ -21,7 +21,7 @@ tr:nth-child(even) td {
   background-color: rgb(250,250,250);
 }
 tr:nth-child(odd) td {
-  background-color: rgb(245,245,245);
+  background-color: rgb(238 238 238);
 }
 caption {
   padding: 10px;
@@ -33,7 +33,7 @@ body {
   font-style: normal;
 }
 .home_button {
-  background-color: rgb(245, 133, 133); 
+  background-color: #f78989;
   border-radius: 10px;
   border: 1px;
   color: white;
@@ -42,7 +42,11 @@ body {
   text-decoration: none;
   display: block;
   width: fit-content;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   font-size: 16px;
+  cursor: pointer;
   margin: 10px auto;
 }
 .input_field {
@@ -63,7 +67,7 @@ input:active {
   outline: none;
 }
 .submit_button {
-  background-color: rgb(0, 156, 0); 
+  background-color: #409eff;
   border-radius: 10px;
   border: 1px;
   color: white;
@@ -73,10 +77,46 @@ input:active {
   display: inline-block;
   font-size: 16px;
   margin: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   cursor: pointer;
 }
+.success_button {
+  background-color: #409eff;
+  border-radius: 10px;
+  border: 1px;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  cursor: pointer;
+}
+.fail_button {
+  background-color: #f78989;
+  border-radius: 10px;
+  border: 1px;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px auto;
+}
 .confirm_button {
-  background-color: rgb(0, 156, 0);
+  background-color: #409eff;
   border-radius: 10px;
   border: 1px;
   color: white;
@@ -92,7 +132,7 @@ input:active {
   cursor: pointer;
 }
 .send_request_button {
-  background-color: rgb(0, 156, 0);
+  background-color: #409eff;
   border-radius: 10px;
   border: 1px;
   color: white;
@@ -105,6 +145,7 @@ input:active {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: normal;
+  cursor: pointer;
 }
 .main_text {
   margin: 10px 10px;
