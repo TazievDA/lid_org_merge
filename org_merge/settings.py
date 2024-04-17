@@ -135,4 +135,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = "start"
+LOGIN_REDIRECT_URL = "start_merge/"
+
+LOGIN_URL = "/"
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240

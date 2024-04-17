@@ -4,12 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
 import requests
+from django.utils.decorators import method_decorator
+
 
 class MergingViews:
 
     def __init__(self):
         pass
 
+    @method_decorator(login_required, name='dispatch')
     def start_merge_view(self, request):
         template = 'index.html'
         return render(request, template)
@@ -32,6 +35,7 @@ class MergingViews:
         response = requests.post(api_url, json=data, headers=headers)
         return response.json()
 
+    @method_decorator(login_required, name='dispatch')
     def show_org_view(self, request):
         orgs = self.find_organizations(request.GET.get('name'))
         template = 'show_orgs.html'
@@ -40,6 +44,7 @@ class MergingViews:
         }
         return render(request, template, context)
 
+    @method_decorator(login_required, name='dispatch')
     def show_orgs_to_merge_view(self, request):
         if request.method == 'POST':
             selected_orgs = request.POST.getlist('selectedOrgs')
@@ -65,6 +70,7 @@ class MergingViews:
         else:
             return HttpResponse('Метод не разрешен', status=405)
 
+    @method_decorator(login_required, name='dispatch')
     def merge_orgs_view(self, request):
         if request.method == 'POST':
             orgs_to_merge = request.POST.getlist('orgIds')[0].split(',')
